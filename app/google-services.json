@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "38160597533",
+    "firebase_url": "https://pret-a-porter-46c11.firebaseio.com",
+    "project_id": "pret-a-porter-46c11",
+    "storage_bucket": "pret-a-porter-46c11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38160597533:android:d77fe5aa7aff1d0c",
+        "android_client_info": {
+          "package_name": "com.example.alexandrebornerand.pretaporter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38160597533-iu8easnmeipg378lqvn9duu4lhmp5a3u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alexandrebornerand.pretaporter",
+            "certificate_hash": "b47a682dc404b74fd56c5e658b24cc2cb6c21597"
+          }
+        },
+        {
+          "client_id": "38160597533-18tmm8dc8i0q2pkcteqem7nd89nj3rhm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRHwpxZwN8BZqYInXdw64RFj4mzNOqulc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38160597533-18tmm8dc8i0q2pkcteqem7nd89nj3rhm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
