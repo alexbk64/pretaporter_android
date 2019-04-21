@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import com.google.firebase.auth.FirebaseAuth;
 
+/***** Registration page - step 2 *****/
+
 public class CreateAccount2Activity extends AppCompatActivity {
 
     /**
@@ -29,14 +31,14 @@ public class CreateAccount2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
-        mEmail = (AutoCompleteTextView) findViewById(R.id.email_registration);
+        mEmail = findViewById(R.id.email_registration);
         //final String email = mEmail.getText().toString();
         String infoToPass = "com.example.alexandrebornerand.pretaporter.EMAIL";
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +46,7 @@ public class CreateAccount2Activity extends AppCompatActivity {
 ////                    Snackbar.make(view, "Email address already exists", Snackbar.LENGTH_LONG)
 ////                            .setAction("Action", null).show();
 //                    //Intent alreadyExists = new Intent(getApplicationContext(), emailExistsActivity.class);
-//                    Intent alreadyExists = new Intent(getApplicationContext(), Login1Activity.class);
+//                    Intent alreadyExists = new Intent(getApplicationContext(), LoginActivity.class);
 //                    String email = mEmail.getText().toString();
 //                    alreadyExists.putExtra("com.example.alexandrebornerand.pretaporter.EMAIL",email);
 //                    startActivity(alreadyExists);

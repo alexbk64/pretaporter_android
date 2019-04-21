@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <group android:checkableBehavior="single">
 
         <item
             android:id="@+id/nav_explore"
-            android:icon="@android:drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_explore_icon"
             android:title="@string/explore" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="@string/slideshow" />
+            android:id="@+id/nav_user_listings"
+            android:icon="@drawable/ic_items"
+            android:title="@string/userListings" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@android:drawable/ic_menu_manage"
-            android:title="@string/tools" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@android:drawable/ic_menu_preferences"
-            android:title="@string/settings" />
+            android:id="@+id/nav_rentals"
+            android:icon="@drawable/ic_deal_black"
+            android:title="@string/rentals" />
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_account_circle"
             android:title="@string/profile" />
         <item
+            android:id="@+id/nav_settings"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/settings" />
+        <item
             android:id="@+id/nav_log_out"
-            android:icon="@drawable/ic_android"
-            android:title="@string/log_out" />
+            android:icon="@drawable/ic_exit_to_app"
+            android:title="@string/log_out"
+            app:showAsAction="never"/>
+
 
     </group>
+
+
 </menu>

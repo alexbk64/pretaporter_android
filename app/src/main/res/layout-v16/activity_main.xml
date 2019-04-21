@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad"
+    tools:context="com.example.alexandrebornerand.pretaporter.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/redirect_logIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="15dp"
+            android:text="@string/connectLogin"
+            android:textColor="@color/white"
+            android:onClick="onTap_signIn"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="-20dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_with_text_white"/>
+            <!--<TextView-->
+                <!--android:id="@+id/welcomeTextView"-->
+                <!--android:layout_marginTop="200dp"-->
+                <!--android:layout_width="285dp"-->
+                <!--android:layout_height="38dp"-->
+                <!--android:fontFamily="casual"-->
+                <!--android:gravity="start"-->
+                <!--android:text="@string/welcomeMessage"-->
+                <!--android:textAlignment="viewStart"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="18sp"-->
+                <!--android:textStyle="bold"-->
+               <!--/>-->
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp">
+            <Button
+                android:id="@+id/redirect_FB"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_outline_rounded"
+                android:onClick="onTap_connectFB"
+                android:text="@string/connectFB"
+                android:textColor="#ffffff"
+                android:layout_centerHorizontal="true"
+                 />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <Button
+                android:id="@+id/redirect_createAcc"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_outline_rounded"
+                android:onClick="onTap_createAccount"
+                android:text="@string/createAccount"
+                android:textColor="#ffffff"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
+            <TextView
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/disclaimerConnect"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -46,9 +46,6 @@ public class UsersDataBaseHelper extends SQLiteOpenHelper {
 
 
         //check if data inserted correctly. return -1 if incorrect.
-        if (result ==-1)
-            return false;
-        //otherwise return true - all is good
-        return true;
+        return result != -1;
     }
 }

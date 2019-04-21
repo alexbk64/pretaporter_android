@@ -8,7 +8,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.alexandrebornerand.pretaporter.CreateAccount3Activity"
     tools:layout_editor_absoluteY="81dp"
-    tools:showIn="@layout/activity_create_account3">
+    tools:showIn="@layout/activity_create_account3"
+    android:background="@drawable/grad">
 
     <TextView
         android:id="@+id/passwordPrompt"
@@ -21,6 +22,7 @@
         android:text="@string/create_password_prompt"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -32,23 +34,26 @@
         android:id="@+id/password_TextView"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="188dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/prompt_password"
+        android:textColor="@color/white"
         android:textAllCaps="true"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="@+id/passWordET"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <TextView
-        android:id="@+id/password_constraints"
+        android:textColor="@color/white"
         android:layout_width="242dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -72,11 +77,14 @@
         android:ems="10"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_TextView"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.017"
+        android:layout_marginLeft="24dp"
+        app:backgroundTint="@color/white"/>
 
 </android.support.constraint.ConstraintLayout>

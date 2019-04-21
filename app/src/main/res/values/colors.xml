@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3f51b5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#f26f6f</color>
+    <color name="colorPrimaryDark">#db5d3b</color>
+    <color name="colorAccent">#cc3d3d</color>
+    <color name="solidCircle">#c9c9c9</color>
+    <color name="rectangleBorder">#FFFFFF</color>
+    <color name="circleBorder">#FFFFFF</color>
+    <color name="gradEnd">#f7725b</color>
+    <color name="gradStart">#cc3d3d</color>
+    <color name="gray">#E5E5E5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+
+
+    <!--Time Square Calendar Picker View library colours-->
+    <color name="calendar_active_month_bg">#fff5f7f9</color>
+    <color name="calendar_bg">#ffffffff</color>
+    <color name="calendar_divider">#ffbababa</color>
+    <color name="calendar_inactive_month_bg">#ffd7d9db</color>
+    <color name="calendar_selected_day_bg">#ff379bff</color>
+    <color name="calendar_highlighted_day_bg">#FF9C9C</color>
+    <color name="calendar_selected_range_bg">#ff96caff</color>
+    <color name="calendar_text_inactive">#40778088</color>
+    <color name="calendar_text_active">#ff778088</color>
+    <color name="calendar_text_selected">#ffffffff</color>
+    <color name="calendar_text_unselectable">#7f778088</color>
+
 </resources>

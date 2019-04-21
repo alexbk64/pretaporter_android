@@ -10,8 +10,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
-public class CreateAccount3Activity extends AppCompatActivity {
+/***** Registration page - step 3 *****/
 
+public class CreateAccount3Activity extends AppCompatActivity {
+//TODO: Add option to show/hide password
     //UI references
     private EditText mPassword;
 
@@ -19,11 +21,11 @@ public class CreateAccount3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account3);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mPassword = (EditText) findViewById(R.id.passWordET);
+        mPassword = findViewById(R.id.passWordET);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +81,7 @@ public class CreateAccount3Activity extends AppCompatActivity {
             mPassword.setError(getString(R.string.error_field_required));
             focusView = mPassword;
             cancel = true;
-        } else if (!Login1Activity.isPasswordValid(password)) {
+        } else if (!LoginActivity.isPasswordValid(password)) {
             mPassword.setError(getString(R.string.error_invalid_password));
             focusView = mPassword;
             cancel = true;

@@ -4,5 +4,5 @@ public enum MessageStatus {
 	Queue,
 	Draft,
 	Read,
-	Unread;
+	Unread
 }

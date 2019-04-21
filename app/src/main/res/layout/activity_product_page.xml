@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.alexandrebornerand.pretaporter.ProductPageActivity">
+
+    <!--<ProgressBar-->
+    <!--android:id="@+id/progressBar"-->
+    <!--style="?android:attr/progressBarStyleLarge"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:visibility="gone"-->
+    <!--app:layout_constraintBottom_toBottomOf="@+id/product_pic_imgView"-->
+    <!--app:layout_constraintEnd_toEndOf="@+id/product_pic_imgView"-->
+    <!--app:layout_constraintStart_toStartOf="@+id/product_pic_imgView"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/product_pic_imgView" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@drawable/grad"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+
+                <!--<TextView-->
+                <!--android:id="@+id/toolbarTitle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Product Details"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="20sp" />-->
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="270dp"
+                    android:background="@color/white"
+                    app:autoPlay="false"
+                    app:fillColor="@color/colorAccent"
+                    app:pageColor="@color/white"
+                    app:radius="3dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="@color/gray"
+                    app:strokeWidth="2dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/title_TextView"
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginBottom="10dp"
+                            android:inputType="textMultiLine"
+                            android:text="GOOGLE HOME MINI"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/title_TextView"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginRight="0dp"
+                            android:text="4.5 of 5 stars"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+                        <!--TODO text to reflect real rating-->
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/lister_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Google"
+                                android:textColor="@color/white"
+                                android:textSize="19sp" />
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+
+
+                            <TextView
+                                android:id="@+id/price_TV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$129.00"
+                                android:textColor="@color/white"
+                                android:textSize="19sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/unit_per_day"
+                                android:textColor="@color/white"
+                                android:textSize="19sp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toEndOf="@id/price_TV"
+                                android:layout_toRightOf="@id/price_TV"
+                                android:layout_marginStart="5dp" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/exchangeMethod_TV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/exchange_method"
+                                android:textColor="@color/white"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:orientation="vertical">
+
+                            <!--USER IMAGE CIRCLE-->
+                            <RelativeLayout
+                                android:id="@+id/img_user"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginRight="20dp"
+                                android:background="@drawable/circle_border">
+
+
+                                <ImageView
+                                    android:id="@+id/user_img"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginStart="3dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginEnd="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_marginBottom="3dp"
+                                    android:adjustViewBounds="true"
+                                    android:background="@drawable/circle"
+                                    android:padding="0dp"
+                                    android:scaleType="centerInside"
+                                    app:backgroundTint="@color/white" />
+                                <!--android:src="@drawable/img_0002" />-->
+
+                            </RelativeLayout>
+                            <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="5604 ratings"-->
+                            <!--android:textSize="13sp"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:layout_marginBottom="10dp"/>-->
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <!--separator-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white" />
+                    <!--description-->
+                    <TextView
+                        android:id="@+id/item_description_TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Get answers, play songs, tackle your day, enjoy your entertainment and control your smart home with just your voice.¹"
+                        android:textColor="@color/white" />
+                    <!--separator-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white" />
+                    <!--category-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/filter_by_category"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/item_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_by_category"
+                        android:textColor="@color/white" />
+                    <!--size-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/filter_by_size"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/item_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_by_size"
+                        android:textColor="@color/white" />
+
+                    <!--colour-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/filter_by_colour"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/item_colour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_by_colour"
+                        android:textColor="@color/white" />
+                    <!--minimum days-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/minimum_days"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/item_minDays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/minimum_days"
+                        android:textColor="@color/white" />
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/availability_btn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_outline"
+                android:text="@string/check_availability"
+                android:textColor="@color/white"
+                android:padding="5dp"/>
+
+            <Button
+                android:id="@+id/EditBtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/button_outline"
+                android:text="@string/action_edit_item"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

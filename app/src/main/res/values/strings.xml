@@ -1,12 +1,12 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Prêt à Porter</string>
     <string name="email_address">Email address</string>
     <string name="connectFB">Continue with Facebook</string>
     <string name="connectLogin">Sign in</string>
     <string name="createAccount">Create an account</string>
-    <string name="disclaimerConnect">By clicking Continue, Create an account or More options, I accept the terms and conditions.</string>
+    <string name="disclaimerConnect">By clicking Continue, Create an account or More options, I accept Prêt à Porter\'s <u>general terms and conditions</u>, <u>terms and conditions of service relative to payments</u>, <u>privacy policy</u>, and <u>non-discrimination policy</u>.</string>
 
-    <string name="large_text">
+    <string name="large_text" tools:keep="@string/large_text">
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -95,9 +95,9 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings" tools:keep="@string/action_settings">Settings</string>
 
-    <string name="welcomeMessage">Welcome to Prêt à Porter</string>
+    <string name="welcomeMessage" tools:keep="@string/welcomeMessage">Welcome to Prêt à Porter</string>
     <string name="introduction_accountCreation">What is your name?</string>
     <string name="first_name">First name</string>
     <string name="surname">Surname</string>
@@ -110,10 +110,10 @@
     <string name="login_prompt">Enter your email address and password</string>
     <string name="prompt_email">Email address</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in" tools:keep="@string/action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
-    <string name="email_exists">This email has already been used to create an account. Please enter your password to continue.</string>
+    <string name="email_exists" tools:keep="@string/email_exists">This email has already been used to create an account. Please enter your password to continue.</string>
     <string name="forgot_password">Forgotten password?</string>
     <!--<string name="error_invalid_password">This password is too short</string>-->
     <string name="error_invalid_password">Your password must contain at least 8 characters, at least one capital letter, and a special character.</string>
@@ -121,25 +121,196 @@
     <string name="error_field_required">This field is required</string>
     <string name="error_invalid_field">This field is invalid</string>
     <string name="error_invalid_date">Please enter a valid date in the following format.\nDD/MM/YYYY </string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="permission_rationale" tools:keep="@string/permission_rationale">"Contacts permissions are needed for providing email completions."</string>
 
-    <string name="password">Password</string>
+    <string name="password" tools:keep="@string/password">Password</string>
+
+
+    <!--Strings related to add item-->
+    <string name="add_item">Add an item</string>
+    <string name="item_title">Title of listing</string>
+    <string name="item_title_hint">e.g. Massimo Dutti 3-piece suit</string>
+    <string name="item_desc">A description of your item</string>
+    <string name="item_desc_hint">e.g. Colour, size, condition, etc.</string>
+    <string name="item_price">Your asking price (daily)</string>
+    <string name="item_price_hint">16.00</string>
+    <string name="item_image">Upload photos (6 max)</string>
+    <string name="action_add_item"> Post my item </string>
+    <string name="item_help">Need some help?</string>
 
     <!-- Title Strings -->
-    <string name="title_activity_scrolling_main">ScrollingMainActivity</string>
     <string name="title_activity_login">Sign in</string>
     <string name="title_activity_create_account1">Create an Account</string>
     <string name="title_activity_create_account2">Create an Account</string>
     <string name="title_activity_create_account3">Create an Account</string>
     <string name="title_activity_create_account4">Create an Account</string>
-    <string name="Import">Import</string>
-    <string name="gallery">Gallery</string>
-    <string name="slideshow">Slideshow</string>
-    <string name="tools">Tools</string>
+    <string name="Import" tools:keep="@string/Import">Import</string>
+    <string name="gallery" tools:keep="@string/gallery">Gallery</string>
+    <string name="userListings">Listings</string>
+    <string name="tools" tools:keep="@string/tools">Tools</string>
     <string name="explore">Explore</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
     <string name="log_out">Log out</string>
     <string name="title_activity_forgot_password">Forgot password</string>
     <string name="get_email_address2">What is your email address?</string>
+    <string name="title_activity_profile_page">Profile Page</string>
+    <string name="usr_active_rentals">None</string>
+    <string name="usr_active_rentals_caption">Active Rentals</string>
+    <string name="date_format_hint">DD/MM/YYYY</string>
+    <string name="item_img_description">item image description</string>
+    <string name="profile_pic_description" tools:keep="@string/profile_pic_description">profile pic description</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_user_listings">Listings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries" tools:keep="@array/list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values" tools:keep="@array/list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" tools:keep="@array/multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="dummy_name">Dummy Name</string>
+    <string name="dummy_rating">4.5</string>
+    <string name="item_lister">Lister:</string>
+    <string name="lister_first_name">FirstName</string>
+    <string name="check_availability">Check Availability</string>
+    <string name="title_activity_productPage">Product Details</string>
+    <string name="action_favourite">Favourite</string>
+    <string name="action_edit_item">Edit this Listing</string>
+    <string name="minimum_days">Minimum number of days for rental</string>
+    <string name="item_minimumDays_hint">2</string>
+    <string name="rentals">Rentals</string>
+    <string name="edit_item">Edit your listing</string>
+    <string name="edit_profile">Edit personal info</string>
+
+    <string name="action_update_item">Update</string>
+
+
+    <!--facebook login-->
+    <string name="facebook_app_id">294366511231517</string>
+    <string name="fb_login_protocol_scheme">fb294366511231517</string>
+
+    <!--rentalViewHolder-->
+    <string name="total_cost_rental">Total rental cost</string>
+    <string name="start_date_tv">From:</string>
+    <string name="end_date_tv">Until:</string>
+    <string name="start_date">start_date</string>
+    <string name="end_date">end_date</string>
+
+    <!--Search View filters-->
+    <string name="filter_list">Filter</string>
+    <string name="sort_by_new" tools:keep="@string/sort_by_new">Sort by newest</string>
+    <string name="filter_by_description">Description</string>
+    <string name="filter_by_price_LTH" tools:keep="@string/filter_by_price_LTH">Price (lowest to highest)</string>
+    <string name="filter_by_price_HTL" tools:keep="@string/filter_by_price_HTL">Price (highest to lowest)</string>
+    <string name="filter_by_category">Category</string>
+    <string name="filter_by_name">Name (default)</string>
+    <string name="filter_by_size">Size</string>
+    <string name="category">Choose a category</string>
+    <string name="select_size">Select the size of your item</string>
+    <string name="select_colour">What colour is it?</string>
+    <string name="filter_by_colour">Colour</string>
+    <string name="exchange_method">Exchange method</string>
+    <string name="unit_per_day">/day</string>
+    <string name="action_delete_item">Delete</string>
+    <string name="item_rating">item rating</string>
+    <string name="item_price_card">item price</string>
+
+    <!--Categories-->
+    <string-array name="categories_array">
+        <item>Wedding</item>
+        <item>Black-tie</item>
+        <item>Graduation</item>
+        <item>Other (specifiy in description)</item>
+    </string-array>
+    <!--Colours-->
+    <string-array name="colours_array">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Orange</item>
+        <item>Purple</item>
+        <item>Grey</item>
+        <item>Other (specifiy in description)</item>
+    </string-array>
+
+    <!--Sizes-->
+    <string-array name="sizes_array">
+        <item>P (Petite)</item>
+        <item>XS (Extra Small)</item>
+        <item>S (Small)</item>
+        <item>M (Medium)</item>
+        <item>L (Large)</item>
+        <item>XL (Extra Large)</item>
+        <item>Other (specifiy in description)</item>
+    </string-array>
+
 </resources>

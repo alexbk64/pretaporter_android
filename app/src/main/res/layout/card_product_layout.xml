@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/rootLayout">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -10,63 +13,97 @@
         android:layout_margin="5dp">
 
         <RelativeLayout
-            android:id="@+id/tvPoductListing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:padding="4dp" />
-
-            <TextView
-                android:id="@+id/textViewTitle"
+            <LinearLayout
+                android:id="@+id/lin_layout_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="140dp"
+                    android:layout_height="110dp"
+                    android:padding="0dp"
+                    android:contentDescription="@string/item_img_description"
+                    app:srcCompat="@drawable/default_profile_pic"/>
 
-            <TextView
-                android:id="@+id/textViewShortDesc"
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textViewTitle"
-                android:layout_alignStart="@+id/textViewTitle"
-                android:layout_below="@+id/textViewTitle"
-                android:text="13.3 Inch, 256 GB"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:layout_toEndOf="@+id/lin_layout_image"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/lin_layout_image">
 
-            <TextView
-                android:id="@+id/textViewRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewShortDesc"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:background="@color/colorPrimary"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="4.7"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/imageView"
+                    android:text="@string/item_title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@id/imageView"
+                    tools:ignore="HardcodedText"
+                    android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/textViewPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewRating"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="INR 56990"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textViewShortDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textViewTitle"
+                    android:layout_alignStart="@+id/textViewTitle"
+                    android:layout_below="@+id/textViewTitle"
+                    android:text="@string/item_desc"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    tools:ignore="HardcodedText"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+
+                <TextView
+                    android:id="@+id/textViewRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewShortDesc"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/imageView"
+                    android:background="@color/colorPrimary"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="@string/item_rating"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+                    android:textStyle="bold"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@id/imageView"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/textViewPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewRating"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/imageView"
+                    android:text="@string/item_price_card"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@id/imageView"
+                    android:textSize="19sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
 
         </RelativeLayout>
 

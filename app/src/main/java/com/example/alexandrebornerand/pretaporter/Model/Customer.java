@@ -20,6 +20,10 @@ public class Customer extends User {
 	public Bag _unnamed_Bag_;
 	public HelpDesk _unnamed_HelpDesk_;
 
+	public Customer(String fist_name, String surname, String email_address, String dob, String id) {
+		super(fist_name, surname, email_address, dob, id);
+	}
+
 	public String getBilling_address() {
 		return this._billing_address;
 	}

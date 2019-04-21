@@ -34,14 +34,14 @@ public class forgotPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
-        mEmail = (AutoCompleteTextView) findViewById(R.id.email_registration);
+        mEmail = findViewById(R.id.email_registration);
         //final String email = mEmail.getText().toString();
         String infoToPass = "com.example.alexandrebornerand.pretaporter.EMAIL";
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +49,7 @@ public class forgotPasswordActivity extends AppCompatActivity {
 ////                    Snackbar.make(view, "Email address already exists", Snackbar.LENGTH_LONG)
 ////                            .setAction("Action", null).show();
 //                    //Intent alreadyExists = new Intent(getApplicationContext(), emailExistsActivity.class);
-//                    Intent alreadyExists = new Intent(getApplicationContext(), Login1Activity.class);
+//                    Intent alreadyExists = new Intent(getApplicationContext(), LoginActivity.class);
 //                    String email = mEmail.getText().toString();
 //                    alreadyExists.putExtra("com.example.alexandrebornerand.pretaporter.EMAIL",email);
 //                    startActivity(alreadyExists);
@@ -58,7 +58,7 @@ public class forgotPasswordActivity extends AppCompatActivity {
                 if (checkEmail()) {
                     Snackbar.make(view, "Sending email..", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-                    Intent continueToLogIn = new Intent(getApplicationContext(), Login1Activity.class);
+                    Intent continueToLogIn = new Intent(getApplicationContext(), LoginActivity.class);
                     String email = mEmail.getText().toString();
 //                    String firstName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.FIRSTNAME");
 //                    String surName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.SURNAME");

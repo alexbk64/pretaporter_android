@@ -1,10 +1,12 @@
 package com.example.alexandrebornerand.pretaporter.Model;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class Product {
-	private int _id;
+public class Product implements Serializable {
+	private String id;
 ////	private ImageView _image_main;
 	private String _name;
 	private String _description;
@@ -15,13 +17,14 @@ public class Product {
 //	private List<Category> _category;
 //	private String _sex;
 //	private String _size;
-//	private boolean _available;
+
 //	//should make rating a double
-	private double _rating;
-	private int image;
+	private double rating;
+	private ArrayList<String> images;
+//	private String image;
 //	private String _condition;
 //	private String[] _faults;
-//	private Customer _lister;
+	private User lister;
 //	private String _location;
 //	private PickUp _receiptMethod;
 //	private Return _returnMethod;
@@ -31,9 +34,25 @@ public class Product {
 //	public PickUp _unnamed_PickUp_;
 //	public Return _unnamed_Return_;
 //	public ProductStatus _unnamed_ProductStatus_;
+	private boolean _available;
+	private ArrayList<String> datesUnavailable;
+	private int minimumNumberOfDays;
+	final private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	private String queryName;
+	private String queryDescription;
+	private String category;
+	private String queryCategory;
+	private String colour;
+	private String queryColour;
+	private String size;
+	private String querySize;
 
-	public Product(int _id/*,ImageView _image_main*/, String _name, String _description, float _daily_fee,/* float _cleaning_fee, float _retail_rate, String _colour, List<Category> _category, String _sex, String _size, boolean _available,*/ double _rating, int _image/*, String _condition, String[] _faults, Customer _lister, String _location, PickUp _receiptMethod, Return _returnMethod, Catalogue _holds, Rental _unnamed_Rental_, Vector<Category> _unnamed_Category_, PickUp _unnamed_PickUp_, Return _unnamed_Return_, ProductStatus _unnamed_ProductStatus_*/) {
-		this._id = _id;
+	//empty constructor
+	public Product(){}
+
+	//int
+	public Product(String _id, String _name, String _description, float _daily_fee, double _rating, ArrayList<String> _images, User _lister, String category, String size, String colour) {
+		this.id = _id;
 //		this._image_main = _image_main;
 		this._name = _name;
 		this._description = _description;
@@ -45,11 +64,11 @@ public class Product {
 //		this._sex = _sex;
 //		this._size = _size;
 //		this._available = _available;
-		this._rating = _rating;
-		this.image = _image;
+		this.rating = _rating;
+		this.images = _images;
 //		this._condition = _condition;
 //		this._faults = _faults;
-//		this._lister = _lister;
+		this.lister = _lister;
 //		this._location = _location;
 //		this._receiptMethod = _receiptMethod;
 //		this._returnMethod = _returnMethod;
@@ -59,22 +78,93 @@ public class Product {
 //		this._unnamed_PickUp_ = _unnamed_PickUp_;
 //		this._unnamed_Return_ = _unnamed_Return_;
 //		this._unnamed_ProductStatus_ = _unnamed_ProductStatus_;
+		this.datesUnavailable=new ArrayList<>();
+		this.minimumNumberOfDays = 0;
+		this._available=true;
+
+		//TODO: allow user to set category. uncomment line below if stops working
+		this.category = category;
+		this.size = size;
+		this.colour = colour;
+		this.queryName=_name.toLowerCase();
+		this.queryDescription=_description.toLowerCase();
+		this.queryCategory = category.toLowerCase();
+		this.queryColour = colour.toLowerCase();
+		this.querySize = size.toLowerCase();
+
+
+//		Date today = new Date();
+//		for (String date : getDatesUnavailable()) {
+//			try {
+//				if (sameDay(simpleDateFormat.parse(date), today)){
+//					this._available=false;break;
+//				}
+//			}catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//		}
+	}
+
+
+	public boolean is_available() {
+		return _available;
+	}
+
+	public void set_available(boolean _available) {
+
+		this._available = _available;
 	}
 
 	public boolean checkAvailability(Date aFrom, Date aTo) {
 		throw new UnsupportedOperationException();
 	}
 
-//	public ImageView get_image_main() {
-//		return _image_main;
-//	}
-//
-//	public void set_image_main(ImageView _image_main) {
-//		this._image_main = _image_main;
-//	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getColour() {
+		return colour;
+	}
+	public void setColour(String colour) {
+		this.colour = colour;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
 
-	public int getId() {
-		return this._id;
+	//needed for firebase querying
+	public String getQueryName() {
+		return queryName;
+	}
+	public String getQueryDescription() {
+		return queryDescription;
+	}
+	public String getQueryCategory() {
+		return queryCategory;
+	}
+	public String getQueryColour() {
+		return queryColour;
+	}
+	public String getQuerySize() {
+		return querySize;
+	}
+
+	public void set_lister(User _lister) {
+		this.lister = _lister;
+	}
+
+	public String getId() {
+		return this.id;
+	}
+
+	public void set_id(String _id) {
+		this.id = _id;
 	}
 
 	public String getName() {
@@ -101,7 +191,14 @@ public class Product {
 		this._daily_fee = aDaily_fee;
 	}
 
-//	public float getCleaning_fee() {
+	public ArrayList<String> getDatesUnavailable() {
+		return datesUnavailable;
+	}
+
+	public void setDatesUnavailable(ArrayList<String> datesUnavailable) {
+		this.datesUnavailable = datesUnavailable;
+	}
+	//	public float getCleaning_fee() {
 //		return this._cleaning_fee;
 //	}
 //
@@ -128,7 +225,6 @@ public class Product {
 //	public List<Category> getCategory() {
 //		return this._category;
 //	}
-
 //	public void setCategory(List<Category> aCategory) {
 //		throw new UnsupportedOperationException();
 //	}
@@ -140,7 +236,6 @@ public class Product {
 //	public void setSex(boolean aSex) {
 //		throw new UnsupportedOperationException();
 //	}
-
 //	public String getSize() {
 //		return this._size;
 //	}
@@ -148,7 +243,24 @@ public class Product {
 //	public void setSize(String aSize) {
 //		this._size = aSize;
 //	}
-//
+
+	public void updateDatesUnavailable(ArrayList<String> datesUnavailable) {
+		if (this.datesUnavailable==null)
+			this.datesUnavailable=datesUnavailable;
+		else {
+//		for (String date : datesUnavailable) {
+//			this.datesUnavailable.add(date);
+//		}
+			//2 step process: remove all elements of first list from second list,
+			//then add first list to second list
+			//gives combined list without duplicates
+			ArrayList<String> temp = new ArrayList<>(datesUnavailable);
+			temp.removeAll(this.datesUnavailable);
+			this.datesUnavailable.addAll(temp);
+		}
+	}
+
+
 //	public boolean getAvailable() {
 //		return this._available;
 //	}
@@ -158,15 +270,16 @@ public class Product {
 //	}
 
 	public double getRating() {
-		return this._rating;
+		return this.rating;
 	}
 
-	public int getImage() {
-		return image;
+//	public String getImage() {
+	public ArrayList<String> getImages() {
+		return images;
 	}
-
-	public void setImage(int image) {
-		this.image = image;
+//	public void setImage(String image) {
+	public void setImages(ArrayList<String> images) {
+		this.images = images;
 	}
 
 	//	public String getCondition() {
@@ -185,9 +298,18 @@ public class Product {
 //		this._faults = aFaults;
 //	}
 
-//	public String getLister() {
-//		throw new UnsupportedOperationException();
-//	}
+	public User getLister() {
+		return this.lister;
+	}
+
+	public int getMinimumNumberOfDays() {
+		return minimumNumberOfDays;
+	}
+
+	public void setMinimumNumberOfDays(int minimumNumberOfDays) {
+		this.minimumNumberOfDays = minimumNumberOfDays;
+	}
+
 
 //	public String getLocation() {
 //		return this._location;
@@ -213,15 +335,23 @@ public class Product {
 //		this._returnMethod = aReturnMethod;
 //	}
 
-	public Product getProduct(String aProduct_id) {
-		throw new UnsupportedOperationException();
-	}
+//	public Product getProduct(String aProduct_id) {
+//		throw new UnsupportedOperationException();
+//	}
+//
+//	public List<Date> getAvailability() {
+//		throw new UnsupportedOperationException();
+//	}
+//
+//	public Rental initiateRental(String aProduct_id, Customer aLister, Date aFrom, Date aTo, float aTotal, PickUp aReceipt, Return aReturn_method, RentalStatus aStatus) {
+//		throw new UnsupportedOperationException();
+//	}
 
-	public List<Date> getAvailability() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Rental initiateRental(String aProduct_id, Customer aLister, Date aFrom, Date aTo, float aTotal, PickUp aReceipt, Return aReturn_method, RentalStatus aStatus) {
-		throw new UnsupportedOperationException();
-	}
+//	private boolean sameDay(Date d1, Date d2) {
+//		Calendar cal1 = Calendar.getInstance();
+//		Calendar cal2 = Calendar.getInstance();
+//		cal1.setTime(d1);
+//		cal2.setTime(d2);
+//		return (cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) && cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR));
+//	}
 }

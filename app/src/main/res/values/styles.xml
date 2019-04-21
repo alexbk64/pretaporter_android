@@ -6,17 +6,45 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--set background colour for menu items-->
+        <item name="android:itemBackground">@color/colorPrimaryDark</item>
+        <!--use custom text appearance for menu items-->
+        <item name="android:itemTextAppearance">@style/myCustomMenuTextAppearance</item>
+        <!--use custom radio button style-->
+        <item name="android:radioButtonStyle">@style/myCustomRadioButton</item>
+        <!--use custom overflow menu style-->
+        <item name="actionOverflowMenuStyle">@style/myCustomOverflowMenu</item>
 
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="actionMenuTextColor">@color/white</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
+    <!--custom text appearance for overflow menu-->
+    <style name="myCustomMenuTextAppearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
+    <!--custom overflowmenu positioning-->
+    <style name="myCustomOverflowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:dropDownVerticalOffset">-4.5dip</item>
+        <item name="overlapAnchor">false</item>
+    </style>
+    <!--custom radio buttons-->
+    <style name="myCustomRadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio</item>
+    </style>
 </resources>

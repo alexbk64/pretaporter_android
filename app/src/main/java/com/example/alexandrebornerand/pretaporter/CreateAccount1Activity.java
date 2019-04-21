@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -13,6 +12,8 @@ import android.widget.EditText;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/***** Registration page - step 1 *****/
 
 public class CreateAccount1Activity extends AppCompatActivity {
 
@@ -25,12 +26,12 @@ public class CreateAccount1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account1);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        firstNameACTV = (AutoCompleteTextView) findViewById(R.id.firstNameACTV);
-        surnameET = (EditText) findViewById(R.id.surnameEditText);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+        firstNameACTV = findViewById(R.id.firstNameACTV);
+        surnameET = findViewById(R.id.surnameEditText);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,14 +120,12 @@ public class CreateAccount1Activity extends AppCompatActivity {
     private boolean isNameValid(String name) {
         //TODO: Replace this with your own logic
             Pattern number = Pattern.compile("[0-9]");
-            Pattern specialChar = Pattern.compile("[!¡@€£#$¢%∞^§&¶*•(ª)º_–+≠={}<>?\\[\\]±§;':.-]");
+            Pattern specialChar = Pattern.compile("[!¡@€£#$¢%∞^§&¶*•(ª)º_–+≠={}<>?\\[\\]±;':.-]");
             Matcher containsNumber = number.matcher(name);
             Matcher containsSpecialChar = specialChar.matcher(name);
 
-            if (containsNumber.find() || containsSpecialChar.find())
-                return false;
-            return true;
-            //return (!containsNumber.find() || !containsSpecialChar.find());
+        return !containsNumber.find() && !containsSpecialChar.find();
+        //return (!containsNumber.find() || !containsSpecialChar.find());
     }
 
 

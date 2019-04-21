@@ -1,45 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="192dp"-->
-    <!--android:background="?attr/colorPrimaryDark"-->
-    <!--android:padding="16dp"-->
-    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark"-->
-    <!--android:orientation="vertical"-->
-    <!--android:gravity="bottom">-->
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="192dp"--><!--android:background="?attr/colorPrimaryDark"--><!--android:padding="16dp"--><!--android:theme="@style/ThemeOverlay.AppCompat.Dark"--><!--android:orientation="vertical"--><!--android:gravity="bottom">-->
 
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Nav Drawer Header title"-->
-        <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>-->
+<!--<TextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="Nav Drawer Header title"--><!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>-->
 
-<!--</LinearLayout>-->
-<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--</LinearLayout>--><!--<?xml version="1.0" encoding="utf-8"?>--><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:id="@+id/pName"--><!--android:layout_width="match_parent"--><!--android:layout_height="180dp"--><!--android:background="@color/colorPrimary"--><!--android:padding="20dp">-->
+
+<!--<TextView--><!--android:id="@+id/textView"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_alignParentBottom="true"--><!--android:layout_alignParentStart="true"--><!--android:layout_marginBottom="13dp"--><!--android:text="TextView"--><!--android:textColor="@color/common_google_signin_btn_text_dark_default" />-->
+
+<!--<ImageView--><!--android:id="@+id/pPic"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_alignEnd="@+id/textView"--><!--android:layout_alignRight="@+id/textView"--><!--android:layout_centerVertical="true"--><!--app:srcCompat="@drawable/ic_person" />--><!--</RelativeLayout>--><!--<?xml version="1.0" encoding="utf-8"?>-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="140dp"
-    android:background="@color/colorPrimary"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="20dp"
-    android:id="@+id/pName">
+    tools:ignore="Overdraw"
+    android:background="@drawable/grad">
+    <!--android:background="@color/colorPrimary"-->
+    <RelativeLayout
+        android:id="@+id/img_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/circle_border"
+        android:layout_marginRight="20dp">
+
+
+        <ImageView
+            android:id="@+id/nav_hdr_pPic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="3dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/circle"
+            android:padding="0dp"
+            android:scaleType="centerInside"
+            app:backgroundTint="@color/white"
+            android:layout_alignParentLeft="true" />
+        <!--android:src="@drawable/img_0002" />-->
+
+    </RelativeLayout>
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/nav_hdr_txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:id="@+id/textView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
+        android:layout_toEndOf="@+id/img_user"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="55sp"
+        android:fontFamily="sans-serif"
+        android:text="@string/dummy_name"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_toRightOf="@+id/img_user" />
+    <TextView
+        android:id="@+id/nav_hdr_userRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/img_user"
+        android:layout_centerVertical="false"
+        android:layout_below="@+id/nav_hdr_txtView"
+        android:fontFamily="sans-serif"
+        android:text="@string/dummy_rating"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_toRightOf="@+id/img_user" />
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_person"
-        android:id="@+id/pPic"
-        android:layout_above="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="18dp" />
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_below="@+id/nav_hdr_txtView"
+        android:layout_toEndOf="@+id/nav_hdr_userRating"
+        android:layout_toRightOf="@+id/nav_hdr_userRating"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        app:srcCompat="@drawable/ic_star_white_24dp"
+        android:layout_marginTop="2.5dp"/>
+
+
 </RelativeLayout>

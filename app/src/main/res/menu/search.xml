@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_action_action_search"
+        android:orderInCategory="100"
+        android:title="@string/abc_search_hint"
+        app:showAsAction="always" />
+
+    <item
+        android:icon="@drawable/ic_filter_list_white"
+        android:orderInCategory="101"
+        android:title="@string/filter_list"
+        app:showAsAction="always">
+
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menuFilterName"
+                    android:title="@string/filter_by_name"
+                    android:checked="true"/>
+                <item
+                    android:id="@+id/menuFilterDesc"
+                    android:title="@string/filter_by_description" />
+                <!--Price filters not working. TODO: uncomment when working-->
+                <!--<item-->
+                    <!--android:id="@+id/menuFilterPriceLTH"-->
+                    <!--android:title="@string/filter_by_price_LTH" />-->
+                <!--<item-->
+                    <!--android:id="@+id/menuFilterPriceHTL"-->
+                    <!--android:title="@string/filter_by_price_HTL" />-->
+                <item
+                    android:id="@+id/menuFilterCategory"
+                    android:title="@string/filter_by_category" />
+                <item
+                    android:id="@+id/menuFilterSize"
+                    android:title="@string/filter_by_size" />
+                <item
+                    android:id="@+id/menuFilterColour"
+                    android:title="@string/filter_by_colour" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
