@@ -9,19 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 /***** Registration page - step 2 *****/
 
 public class CreateAccount2Activity extends AppCompatActivity {
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
 
     //UI references
     private FirebaseAuth firebaseAuth;
@@ -35,60 +29,28 @@ public class CreateAccount2Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
         mEmail = findViewById(R.id.email_registration);
-        //final String email = mEmail.getText().toString();
         String infoToPass = "com.example.alexandrebornerand.pretaporter.EMAIL";
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (emailExists(mEmail)) {
-////                    Snackbar.make(view, "Email address already exists", Snackbar.LENGTH_LONG)
-////                            .setAction("Action", null).show();
-//                    //Intent alreadyExists = new Intent(getApplicationContext(), emailExistsActivity.class);
-//                    Intent alreadyExists = new Intent(getApplicationContext(), LoginActivity.class);
-//                    String email = mEmail.getText().toString();
-//                    alreadyExists.putExtra("com.example.alexandrebornerand.pretaporter.EMAIL",email);
-//                    startActivity(alreadyExists);
-//                }
-//                else {
-                    if (attemptRegister()) {
-                        Snackbar.make(view, "Registering email address..", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                        Intent continueToPasswordCreation = new Intent(getApplicationContext(), CreateAccount3Activity.class);
-                        String email = mEmail.getText().toString();
-                        String firstName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.FIRSTNAME");
-                        String surName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.SURNAME");
-                        continueToPasswordCreation.putExtra("com.example.alexandrebornerand.pretaporter.EMAIL", email);
-                        continueToPasswordCreation.putExtra("com.example.alexandrebornerand.pretaporter.FIRSTNAME",firstName);
-                        continueToPasswordCreation.putExtra("com.example.alexandrebornerand.pretaporter.SURNAME",surName);
 
-                        startActivity(continueToPasswordCreation);
-                    }
-                //}
+                if (attemptRegister()) {
+                    Snackbar.make(view, "Registering email address..", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    Intent continueToPasswordCreation = new Intent(getApplicationContext(), CreateAccount3Activity.class);
+                    String email = mEmail.getText().toString();
+                    String firstName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.FIRSTNAME");
+                    String surName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.SURNAME");
+                    continueToPasswordCreation.putExtra("com.example.alexandrebornerand.pretaporter.EMAIL", email);
+                    continueToPasswordCreation.putExtra("com.example.alexandrebornerand.pretaporter.FIRSTNAME", firstName);
+                    continueToPasswordCreation.putExtra("com.example.alexandrebornerand.pretaporter.SURNAME", surName);
+
+                    startActivity(continueToPasswordCreation);
+                }
             }
         });
-    }
-
-    //helper method: checks if email already belongs to a user
-    private boolean emailExists(AutoCompleteTextView mEmail) {
-        // TODO: attempt authentication against a network service.
-
-
-        boolean exists = false;
-        String email = mEmail.getText().toString();
-//        for (String credential : DUMMY_CREDENTIALS) {
-//            String[] pieces = credential.split(":");
-//            if (pieces[0].equals(email)) {
-//                // Account exists, return true
-//                exists = true;
-//            }
-//        }
-        if (firebaseAuth.getCurrentUser().getEmail().equals(email)) {
-            exists = true;
-        }
-
-        return exists;
     }
 
 
@@ -98,9 +60,7 @@ public class CreateAccount2Activity extends AppCompatActivity {
      * errors are presented and no actual login attempt is made.
      */
     private boolean attemptRegister() {
-//        if (mAuthTask != null) {
-//            return;
-//        }
+
 
         // Reset errors.
         mEmail.setError(null);
@@ -111,12 +71,6 @@ public class CreateAccount2Activity extends AppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-//        // Check for a valid password, if the user entered one.
-//        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-//            mPasswordView.setError(getString(R.string.error_invalid_password));
-//            focusView = mPasswordView;
-//            cancel = true;
-//        }
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
@@ -145,8 +99,7 @@ public class CreateAccount2Activity extends AppCompatActivity {
         }
     }
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@")&&email.contains(".");
+    boolean isEmailValid(String email) {
+        return email.contains("@") && email.contains(".");
     }
 }

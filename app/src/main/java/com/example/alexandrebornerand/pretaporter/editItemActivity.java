@@ -52,8 +52,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-//for darsh multipleImageSelect library
-//import com.darsh.multipleimageselect.models.Image;
 
 public class editItemActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -143,9 +141,9 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
                 query.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                        Rental tempRental = ds.getValue(Rental.class);
-                            if (tempRental.get_product().getId().equals(product.getId())){
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            Rental tempRental = ds.getValue(Rental.class);
+                            if (tempRental.get_product().getId().equals(product.getId())) {
 
                                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                                 Date tempStartDate = new Date();
@@ -160,7 +158,7 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
                                 //if either of those conditions are met, delete operation has a conflict
                                 if (tempRental.isActive() || (!tempRental.isActive() && tempStartDate.after(today)))
                                     //add to list of conflicting rentals
-                                conflictingRentals.add(tempRental);
+                                    conflictingRentals.add(tempRental);
                             }
                         }
                         //notify user that rental cannot be deleted
@@ -177,21 +175,21 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
                             }).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "onSuccess: deleted product "+product.getId() + " from db");
+                                    Log.d(TAG, "onSuccess: deleted product " + product.getId() + " from db");
                                 }
                             });
                             //delete stored media associated to product from cloud storage
-                            for (int i=0; i<product.getImages().size(); i++) {
+                            for (int i = 0; i < product.getImages().size(); i++) {
                                 final int counter = i;
                                 storageReference.child(product.getId()).child(String.valueOf(i)).delete().addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Log.d(TAG, "onFailure: could not delete product " + product.getId() + " media "+counter+" from storage -" + e);
+                                        Log.d(TAG, "onFailure: could not delete product " + product.getId() + " media " + counter + " from storage -" + e);
                                     }
                                 }).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Log.d(TAG, "onSuccess: deleted " + product.getId() + "'s media "+counter+" from storage");
+                                        Log.d(TAG, "onSuccess: deleted " + product.getId() + "'s media " + counter + " from storage");
                                     }
                                 });
                             }
@@ -479,33 +477,6 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
         downloadUrls = product.getImages();
         String minDays = minimumDaysET.getText().toString();
 
-
-//        finalPrice = Float.parseFloat(price);
-//
-//        //upload user selected images
-//        uploadImage();
-//        //create new product, and push to database
-//        Product item = new Product(product.getId(), title, description, finalPrice, rating, downloadUrls, customer, categorySelected, sizeSelected, colourSelected);
-//        if (minDays.isEmpty())
-//            item.setMinimumNumberOfDays(1);
-//        else
-//            item.setMinimumNumberOfDays(Integer.parseInt(minDays));
-//        ref.setValue(item, new DatabaseReference.CompletionListener() {
-//
-//            @Override
-//            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-//                //TODO: add toast or something to notify user on update status
-//                if (databaseError == null) {
-//                    //success
-//                    Toast.makeText(getApplicationContext(), "update successful", Toast.LENGTH_SHORT).show();
-//                    finish();
-//                    startActivity(new Intent(getApplicationContext(), UserListingsActivity.class));
-//                } else {
-//                    //push was unsuccessful, notify user
-//                    Toast.makeText(getApplicationContext(), "update failed", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
         // Reset errors.
         editText_title.setError(null);
         editText_desc.setError(null);
@@ -542,7 +513,7 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
             cancel = true;
         }
         // Check for at least 1 image
-        if (images==null) {
+        if (images == null) {
             imageSelectorTV.setError(getString(R.string.error_field_required));
             Toast.makeText(this, "You must select at least 1 image", Toast.LENGTH_SHORT).show();
             focusView = btn_upload_img;
@@ -620,7 +591,7 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
                             Uri downloadUri = task.getResult();
                             try {
                                 downloadUrls.set(count, downloadUri.toString());
-                            } catch (IndexOutOfBoundsException e){
+                            } catch (IndexOutOfBoundsException e) {
                                 downloadUrls.add(downloadUri.toString());
                             }
                             dbRef.setValue(downloadUrls);
@@ -636,31 +607,13 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
                 });
             }//END for each image
             if (downloadUrls.size() > images.size()) {
-                for (int i=images.size(); i<downloadUrls.size(); i++){
+                for (int i = images.size(); i < downloadUrls.size(); i++) {
                     downloadUrls.remove(i);
                 }
             }
         }//END if images!=null
-//        return url;
     }//END uploadImages
 
-    /*** using multipleImageSelect library
-     * https://github.com/darsh2/MultipleImageSelect
-     */
-//    private void chooseImage() {
-//        Intent intent = new Intent(this, AlbumSelectActivity.class);
-////set limit on number of images that can be selected, default is 10
-//        int numberOfImagesToSelect = 6;
-//        intent.putExtra(Constants.INTENT_EXTRA_LIMIT, numberOfImagesToSelect);
-//        startActivityForResult(intent, Constants.REQUEST_CODE);
-//    }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == Constants.REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-//            //The array list has the image paths of the selected images
-//            images = data.getParcelableArrayListExtra(Constants.INTENT_EXTRA_IMAGES);
-//        }
-//    }
 
     /*** using built in image chooser, for single image selection for simplicity **/
 
@@ -722,7 +675,7 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // An item was selected
-        switch (parent.getId()){
+        switch (parent.getId()) {
             case R.id.categories_spinner:
                 categorySelected = parent.getItemAtPosition(position).toString();
                 break;
@@ -741,16 +694,4 @@ public class editItemActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
-//    private class RetrieveImages extends AsyncTask<String, Void, Bitmap> {
-//        ImageView imageView;
-//
-//        public RetrieveImages(ImageView imageView) {
-//            this.imageView = imageView;
-//        }
-//
-//        @Override
-//        protected Bitmap doInBackground(String... strings) {
-//            return null;
-//        }
-//    }
 }

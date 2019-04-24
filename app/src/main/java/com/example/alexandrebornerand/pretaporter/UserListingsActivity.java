@@ -52,8 +52,6 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 //import com.squareup.picasso.Transformation;
@@ -61,16 +59,7 @@ import java.util.Locale;
  * MUST ACKNOWLEDGE
  * https://developer.android.com/training/implementing-navigation/nav-drawer#java
  * A DYNAMIC RECYCLERVIEW LIST ACTIVITY
- * <p>
- * https://developer.android.com/training/implementing-navigation/nav-drawer#java
- * A DYNAMIC RECYCLERVIEW LIST ACTIVITY
- * <p>
- * https://developer.android.com/training/implementing-navigation/nav-drawer#java
- * A DYNAMIC RECYCLERVIEW LIST ACTIVITY
- **/
-/**
- * https://developer.android.com/training/implementing-navigation/nav-drawer#java
- */
+ * /
 
 /** A DYNAMIC RECYCLERVIEW LIST ACTIVITY**/
 
@@ -82,62 +71,33 @@ public class UserListingsActivity extends AppCompatActivity {
     private static final String TAG = "UserListingsActivity";
 
 
-    //a list to store all the products
-    private List<Product> productList_perso;
-
     //the recyclerview
     private RecyclerView recyclerView;
 
     //drawerLayout
     private DrawerLayout drawerLayout;
 
-    private Toolbar mToolbar;
-    private ActionBar mActionBar;
     private FirebaseAuth firebaseAuth;
-    private NavigationView navigationView;
-    private String first_name;
-    private String surname;
-    private Uri photoUrl;
     private TextView mName;
     private ImageView mImg;
-    private String full_name;
-    private String display_name;
-    private Date dob;
     private FirebaseUser user;
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseRecyclerAdapter<Product, ItemViewHolder> firebaseRecyclerAdapter;
-    private String itemName;
-    private FirebaseStorage firebaseStorage;
-    private StorageReference storageReference;
-    private Uri defaultPhoto;
-    private Product item;
-    private ArrayList<Product> products;
     private StorageReference defaultStorageRef;
     private MaterialSearchView searchView;
 
     private String filter;
 
 
-//
-//    private DatabaseReference databaseReference;
-
-//    @Override
-//    protected void onResume(){
-//        super.onResume();
-//        firebaseRecyclerAdapter.startListening();
-////        firebaseRecyclerAdapter.notifyDataSetChanged();
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_list);
         setContentView(R.layout.drawer_layout_user_listings);
 
 
         //firebase
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth == null) {
@@ -147,23 +107,12 @@ public class UserListingsActivity extends AppCompatActivity {
         }
 
 
-        /**HANDLES USER's FIRST LOG IN
-         * Takes user info from CreateAccount activities and
-         */
-//        //Handles case of email already existing. Pre-fills form and notifies user
-//        if (getIntent().hasExtra("com.example.alexandrebornerand.pretaporter.EMAIL")) {
-//            String emailAddress = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.EMAIL");
-//            mEmailView.setText(emailAddress);
-//            Snackbar.make(mEmailView, R.string.email_exists, Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show();
-//        }
-
         user = firebaseAuth.getCurrentUser();
-        firebaseStorage = FirebaseStorage.getInstance();
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         defaultStorageRef = firebaseStorage.getReference();
-        storageReference = firebaseStorage.getReference("/users/" + user.getUid() + "/images/");
-        defaultPhoto = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pret-a-porter-46c11.appspot.com/o/users%2F4J3khWJ36aPjLFvdtoVDbjccXoz2%2Fimages%2Fdefault_profile_pic.png?alt=media&token=01e1d475-9e7d-4c7d-8f17-ed009542afe5");
-        products = new ArrayList<>();
+        StorageReference storageReference = firebaseStorage.getReference("/users/" + user.getUid() + "/images/");
+        Uri defaultPhoto = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pret-a-porter-46c11.appspot.com/o/users%2F4J3khWJ36aPjLFvdtoVDbjccXoz2%2Fimages%2Fdefault_profile_pic.png?alt=media&token=01e1d475-9e7d-4c7d-8f17-ed009542afe5");
+        ArrayList<Product> products = new ArrayList<>();
 
         //set queryName to default filter
         if (filter==null)
@@ -190,18 +139,6 @@ public class UserListingsActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-//        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-//            @Override
-//            public void onSearchViewShown() {
-//                //Do some magic
-//            }
-//
-//            @Override
-//            public void onSearchViewClosed() {
-//                //Do some magic
-//            }
-//        });
 
 
         //generate toolbar and navigation view
@@ -282,7 +219,6 @@ public class UserListingsActivity extends AppCompatActivity {
             }
         };
 
-//        searchQuery.addChildEventListener(childEventListener);
         searchQuery.addValueEventListener(valueEventListener);
 
         FirebaseRecyclerOptions<Product> options =
@@ -296,11 +232,9 @@ public class UserListingsActivity extends AppCompatActivity {
             protected void onBindViewHolder(final ItemViewHolder viewHolder, final int position, Product model) {
                 //only show items which dont match the condition
                 if (!model.getLister().getId().equals(user.getUid())) {
-//                if (!filteredProducts.get(viewHolder.getAdapterPosition()).getLister().getId().equals(user.getUid())) {
                     Log.d(TAG, "onBindViewHolder: skipped viewHolder " + viewHolder.getAdapterPosition());
                     viewHolder.hide();
-                    //delete until here to return to working code
-//                    if (!filter.equals(model.get))
+
                 } else {
                     //matches filter, show
                     viewHolder.show();
@@ -319,10 +253,7 @@ public class UserListingsActivity extends AppCompatActivity {
                         currentStorageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-//                            Glide.with(getApplicationContext())
-//                                    .load(uri)
-//                                    .into(viewHolder.image);
-                                //photoUrl = uri;
+
                                 viewHolder.setImage(uri, viewHolder.image);
                                 Log.d(TAG, "onBindViewHolder: photoUri = " + uri);
                             }
@@ -330,7 +261,6 @@ public class UserListingsActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 //do nothing
-                                //photoUrl=null;
                                 Log.w(TAG, "onFailure: failed to get downloadUri", e);
                             }
                         });
@@ -388,12 +318,7 @@ public class UserListingsActivity extends AppCompatActivity {
         /**
          * TRYING TO LET FirebaseUI DO THE WORK
          */
-//        Query query = databaseReference
-//                .child("listings")
-//                .orderByChild("lister/id").equalTo(user.getUid());
-////                .child(user.getUid());
-////                .child("listings");
-////                .limitToLast(50);
+
         Query query = databaseReference
                 .child("listings")
 //                .orderByChild("queryName")
@@ -421,11 +346,8 @@ public class UserListingsActivity extends AppCompatActivity {
             protected void onBindViewHolder(final ItemViewHolder viewHolder, final int position, Product model) {
                 //only show items which dont match the condition
                 if (!model.getLister().getId().equals(user.getUid())) {
-//                if (!filteredProducts.get(viewHolder.getAdapterPosition()).getLister().getId().equals(user.getUid())) {
                     Log.d(TAG, "onBindViewHolder: skipped viewHolder " + viewHolder.getAdapterPosition());
                     viewHolder.hide();
-                    //delete until here to return to working code
-//                    if (!filter.equals(model.get))
                 } else {
                     //matches filter, show
                     viewHolder.show();
@@ -489,21 +411,20 @@ public class UserListingsActivity extends AppCompatActivity {
 
         /** TOOLBAR IMPLEMENTATION **/
 
-        mToolbar = findViewById(R.id.toolbar);
+        Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        mActionBar = getSupportActionBar();
+        ActionBar mActionBar = getSupportActionBar();
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         }
-//        else if (mActionBar == null)
-//            System.out.println("actionbar is null");
+
 
 
         /**NAVIGATION DRAWER IMPLEMENTATION**/
         //implement OnNavigationItemSelectedListener interface and attach it to NavigationView by
         //calling setNavigationItemSelectedListener()
-        navigationView = findViewById(R.id.nav_view_userListings);
+        NavigationView navigationView = findViewById(R.id.nav_view_userListings);
         mName = navigationView.getHeaderView(0).findViewById(R.id.nav_hdr_txtView);
         mImg = navigationView.getHeaderView(0).findViewById(R.id.nav_hdr_pPic);
         getUserInfo();
@@ -534,12 +455,6 @@ public class UserListingsActivity extends AppCompatActivity {
                             //TODO: what to do when click Explore
                             finish();
                             startActivity(new Intent(getApplicationContext(), ListActivity.class));
-                        }
-                        //if user clicked settings
-                        else if (menuItem.getItemId() == R.id.nav_settings) {
-                            //TODO: uncomment below once toolbar implemented on settings page
-                            //finish();
-                            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                         }
                         //if user clicked my listings
                         else if (menuItem.getItemId() == R.id.nav_user_listings) {
@@ -621,27 +536,6 @@ public class UserListingsActivity extends AppCompatActivity {
     private void getUserInfo() {
         //double check user exists to avoid errors
         if (user != null) {
-//            for (UserInfo profile : user.getProviderData()) {
-//                // Id of the provider (ex: google.com)
-//                String providerId = profile.getProviderId();
-//
-//                // UID specific to the provider
-//                String uid = profile.getUid();
-//
-//                // Name, email address, and profile photo Url
-//                name = profile.getDisplayName();
-//                photoUrl = profile.getPhotoUrl();
-//                mName.setText(name);
-//
-//                Picasso.with(getApplicationContext())
-//                        .load(photoUrl.toString())
-//                        .placeholder(R.drawable.logo)
-//                        .resize(100, 100)
-//                        .transform(new CircleTransform())
-//                        .centerCrop()
-//                        .into(mPic);
-//            }
-            // Name, email address, and profile photo Url
             String display_name_hdr = user.getDisplayName();
             Uri photoUrl_hdr = user.getPhotoUrl();
             mName.setText(display_name_hdr);

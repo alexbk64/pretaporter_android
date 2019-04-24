@@ -13,7 +13,7 @@ import android.widget.EditText;
 /***** Registration page - step 3 *****/
 
 public class CreateAccount3Activity extends AppCompatActivity {
-//TODO: Add option to show/hide password
+    //TODO: Add option to show/hide password
     //UI references
     private EditText mPassword;
 
@@ -40,9 +40,9 @@ public class CreateAccount3Activity extends AppCompatActivity {
                     String firstName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.FIRSTNAME");
                     String surName = getIntent().getExtras().getString("com.example.alexandrebornerand.pretaporter.SURNAME");
                     continueToDobActivity.putExtra("com.example.alexandrebornerand.pretaporter.EMAIL", email);
-                    continueToDobActivity.putExtra("com.example.alexandrebornerand.pretaporter.FIRSTNAME",firstName);
-                    continueToDobActivity.putExtra("com.example.alexandrebornerand.pretaporter.SURNAME",surName);
-                    continueToDobActivity.putExtra("com.example.alexandrebornerand.pretaporter.PASSWORD",password);
+                    continueToDobActivity.putExtra("com.example.alexandrebornerand.pretaporter.FIRSTNAME", firstName);
+                    continueToDobActivity.putExtra("com.example.alexandrebornerand.pretaporter.SURNAME", surName);
+                    continueToDobActivity.putExtra("com.example.alexandrebornerand.pretaporter.PASSWORD", password);
 
                     startActivity(continueToDobActivity);
                 }
@@ -69,12 +69,6 @@ public class CreateAccount3Activity extends AppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-//        // Check for a valid password, if the user entered one.
-//        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-//            mPasswordView.setError(getString(R.string.error_invalid_password));
-//            focusView = mPasswordView;
-//            cancel = true;
-//        }
 
         // Check for a valid password address.
         if (TextUtils.isEmpty(password)) {

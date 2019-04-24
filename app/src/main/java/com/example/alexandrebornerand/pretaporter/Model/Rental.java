@@ -25,31 +25,18 @@ public class Rental {
 		this._fromDate = _fromDate;
 		this._toDate = _toDate;
 		this._product = _product;
-//		daysRented = new ArrayList<>();
-
 
 	}
 
 	public Boolean isActive() {
 		for (Date day : getDaysRented()) {
 			if (sameDay(day, new Date())){
-//				this.active = true;
 				return true;
 			}
 		}
-//		this.active = false;
 		return false;
 	}
 
-//	public void initialiseActiveStatus() {
-//		for (Date day : getDaysRented()) {
-//			if (sameDay(day, new Date())){
-//				this.active = true;
-//				return;
-//			}
-//			this.active = false;
-//		}
-//	}
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
@@ -118,8 +105,6 @@ public class Rental {
 		return daysRented;
 	}
 
-
-
 	private boolean sameDay(Date d1, Date d2) {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
@@ -128,87 +113,4 @@ public class Rental {
 		return (cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) && cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR));
 	}
 
-
-	//	private List<String> _conditions;
-//	private Date _date;
-//	private PickUp _exchange_method;
-//	private String _exchange_location;
-//	private Return _return_method;
-//	private String _return_location;
-	//private Payment _payment_details;
-//	private RentalStatus _status;
-//	public Vector<Customer> _involved_in = new Vector<Customer>();
-//	public Transaction _unnamed_Transaction_;
-//	public Product _unnamed_Product_;
-//	public RentalStatus _unnamed_RentalStatus_;
-//	public PickUp _unnamed_PickUp_;
-//	public Return _unnamed_Return_;
-
-//	public float getAmount() {
-//		return this._amount;
-//	}
-//
-//	public int getProductID() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public void initiateRental() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public void requestFitting() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public String getLister() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public String getRenter() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public String getConditions() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public Date getDate() {
-//		return this._date;
-//	}
-//
-//	public int getRentalNumber() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public Date getFromDate() {
-//		return this._fromDate;
-//	}
-//
-//	public Date getToDate() {
-//		return this._toDate;
-//	}
-//
-//	public String getExchange_method() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public String getExchange_location() {
-//		return this._exchange_location;
-//	}
-//
-//	public String getReturn_method() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public String getReturn_location() {
-//		return this._return_location;
-//	}
-//
-//	/*public Payment getPayment_details() {
-//		return this._payment_details;
-//	}*/
-//
-//	public void setConditions(List<String> aConditions) {
-//		throw new UnsupportedOperationException();
-//	}
 }

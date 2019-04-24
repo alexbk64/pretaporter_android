@@ -243,17 +243,12 @@ public class ListActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 productArrayList = new ArrayList<>();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    // Do magic here
-                    // AttendanceList attendanceList=attendanceSnapshot.getValue(AttendanceList.class);
-                    // attendanceList.name=attendanceSnapshot.child("Name").getValue(String.class);
-                    // attendanceList.mobile=attendanceSnapshot.child("Mobile").getValue(String.class);
 
                     tempProduct = child.getValue(Product.class);
                     tempProduct.set_id(child.child("id").getValue(String.class));
                     tempProduct.set_lister(child.child("lister").getValue(User.class));
                     productArrayList.add(tempProduct);
 
-                    //temp.getId();
 
                 }//END for each dataSnapshot
             }
@@ -291,25 +286,14 @@ public class ListActivity extends AppCompatActivity {
             protected void onBindViewHolder(final ItemViewHolder viewHolder, final int position, Product model) {
                 Log.d(TAG, "onBindViewHolder: called.");
                 // Bind the Chat object to the ChatHolder
-                // ...
-                //if (productList_perso.size() > 0) {
-//                    Product item = productList_perso.get(position);
-//                    ItemViewHolder holder = (ItemViewHolder) viewHolder;
-                //holder.image.setImageResource(ImageView.item.get_image_main());
+
 
                 viewHolder.name.setText(model.getName());
                 viewHolder.short_description.setText(model.getDescription());
                 viewHolder.rating.setText(String.valueOf(model.getRating()));
                 String temp = NumberFormat.getCurrencyInstance(Locale.getDefault()).format(model.getDaily_fee());
                 viewHolder.price.setText(temp);
-//                String listingID = userList.get(position).getId();
 
-//                String userID = userList.get(position).getId();
-
-//                String userID = productArrayList.get(position).getLister().getId();
-
-//                String listingID = model.getId();
-//                String userID = model.getLister().getId();
                 String key = getRef(position).getKey();
                 String listingID = key;
                 userID = "";
@@ -549,12 +533,6 @@ public class ListActivity extends AppCompatActivity {
                             //TODO: what to do when click Explore
                             finish();
                             startActivity(new Intent(getApplicationContext(), ListActivity.class));
-                        }
-                        //if user clicked settings
-                        else if (menuItem.getItemId() == R.id.nav_settings) {
-                            //TODO: uncomment below once toolbar implemented on settings page
-                            //finish();
-                            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                         }
                         //if user clicked my listings
                         else if (menuItem.getItemId() == R.id.nav_user_listings) {

@@ -43,11 +43,9 @@ public class CreateAccount4Activity extends AppCompatActivity {
     private Calendar calendar;
     private Date dOfBirth;
     private SimpleDateFormat simpleDateFormat;
-    private Date minimumAge;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private User newUser;
-    private String tempDob;
     String id;
     private DatePickerDialog datePickerDialog;
 
@@ -81,7 +79,6 @@ public class CreateAccount4Activity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(CreateAccount4Activity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                        startDate.set();
                         Calendar cal = Calendar.getInstance();
                         cal.set(year, month, dayOfMonth);
                         Date date = cal.getTime();
@@ -98,18 +95,7 @@ public class CreateAccount4Activity extends AppCompatActivity {
             }
         });
         String dob = mDob.getText().toString();
-//        Date today = new Date();
-//        //dOfBirth = new Date();
-//        calendar = new GregorianCalendar();
-//        calendar.setTime(today);
-//        int year = calendar.get(Calendar.YEAR);
-//        // month + 1 to account for indexing
-//        int month = calendar.get(Calendar.MONTH);
-//        int day = calendar.get(Calendar.DAY_OF_MONTH);
-//        LocalDate ld = new LocalDate();
-//        ld = ld.minusYears(18).minusDays(1);
-//        System.out.println(DateTimeFormat.forPattern("dd/MM/yyyy").print(ld));
-//        minimumAge = today-;
+
 
         //set date format
         //MM-dd-yyyy, MM.dd.yyyy, dd.MM.yyyy, etc.
@@ -119,15 +105,11 @@ public class CreateAccount4Activity extends AppCompatActivity {
         //parse string into Date
         try {
             dOfBirth = simpleDateFormat.parse(dob);
-            //valid format
-
-            //if (dOfBirth.after(minimumAge))
-            //valid, over 18
-
         }
         //invalid
         catch (ParseException e) {
             //invalid
+            e.printStackTrace();
 
         }
 
@@ -146,17 +128,6 @@ public class CreateAccount4Activity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (attemptRegister()) {
-//                    Snackbar.make(view, "Registering dob..", Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
-//                    //navigate to listings page
-//                    finish();
-//                    Intent continueToListings = new Intent(getApplicationContext(), ListActivity.class);
-//                    startActivity(continueToListings);
-//                } else {
-//                    //registration failed
-//                    Toast.makeText(getApplicationContext(), "Registration failed", Toast.LENGTH_SHORT).show();
-//                }
                 attemptRegister();
 
             }
@@ -169,9 +140,6 @@ public class CreateAccount4Activity extends AppCompatActivity {
      * errors are presented and no actual login attempt is made.
      */
     private boolean attemptRegister() {
-//        if (mAuthTask != null) {
-//            return;
-//        }
 
         // Reset errors.
         mDob.setError(null);
@@ -192,9 +160,6 @@ public class CreateAccount4Activity extends AppCompatActivity {
             focusView = mDob;
             cancel = true;
         }
-
-
-        //else if (dOfBirth.after(new Date(1))) {}
 
 
         if (cancel) {
@@ -235,44 +200,7 @@ public class CreateAccount4Activity extends AppCompatActivity {
         }
     }
 
-    private boolean isDobValid(String dob) {
-        //TODO: Replace this with your own logic
-        //return password.length() > 8;
-//        if (dob.length()==10) {
-//            Pattern letter = Pattern.compile("[a-zA-z]");
-//            Pattern number = Pattern.compile("[0-9]");
-//            Pattern invalidSpecialChar = Pattern.compile("[!¡@€£#$¢%∞^§&¶*•(ª)º_–+≠={}<>?\\[\\]±§;':.");
-//            Pattern validSpecialChar = Pattern.compile("/");
-//
-//            Matcher containsLetter = letter.matcher(dob);
-//            Matcher containsNumber = number.matcher(dob);
-//            Matcher containsSpecialChar = invalidSpecialChar.matcher(dob);
-//            Matcher containsValidChar = validSpecialChar.matcher(dob);
-//// IF contains only numbers and valid special chars //
-//            if (!containsLetter.find() && containsNumber.find() && !containsSpecialChar.find() && containsValidChar.find()){
-//                for (int i =0; i<=dob.length();i++){
-//
-//                    char c = dob.charAt(i);
-//                    char nextC = dob.charAt(i+1);
-//                    switch (i) {
-//                        case 0:
-//                            //DD - must be between 0 and 31 (last day to be born on)
-//                            if ((c<=3 && c>=0) &&
-//                            break;
-//                        case 1:
-//                            break;
-//                        case 2:
-//                            break;
-//                    }
-//
-//
-//                }
-//            }
-//            return true;
-//        }
-//        else
-//            return false;
-
+    boolean isDobValid(String dob) {
         //check if null
         if (dob.trim().equals(""))
             return false;

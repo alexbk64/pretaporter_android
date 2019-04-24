@@ -74,39 +74,9 @@ public class dateSelectorActivity extends AppCompatActivity {
                 return isSelectable(date);
             }
         });
-//        datePicker.setOnInvalidDateSelectedListener(null);
-//        datePicker.setOnInvalidDateSelectedListener(new CalendarPickerView.OnInvalidDateSelectedListener() {
-//            @Override
-//            public void onInvalidDateSelected(Date date) {
-//
-//            }
-//        });
-
-
-//        datePicker.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
-//            @Override
-//            public void onDateSelected(Date date) {
-//                String selectedDate = DateFormat.getDateInstance(DateFormat.FULL).format(date);
-//                Toast.makeText(getApplicationContext(), selectedDate, Toast.LENGTH_SHORT).show();
-//
-//                Calendar calSelected = Calendar.getInstance();
-//                calSelected.setTime(date);
-//
-//                //return date to productPageActivity
-//                Intent returnIntent = new Intent();
-//                returnIntent.putExtra("result",selectedDate);
-//                setResult(Activity.RESULT_OK,returnIntent);
-//                finish();
-//            }
-//
-//            @Override
-//            public void onDateUnselected(Date date) {
-//
-//            }
-//        });
     }//END onCreate
 
-    private Date getNextAvailableDay() {
+    Date getNextAvailableDay() {
         //sets dateToReturn to today
         Date dateToReturn = new Date();
 
@@ -124,11 +94,11 @@ public class dateSelectorActivity extends AppCompatActivity {
         return dateToReturn;
     }
 
-    /*
-    Ref https://stackoverflow.com/questions/2517709/comparing-two-java-util-dates-to-see-if-they-are-in-the-same-day
-     */
+    /****
+     Ref https://stackoverflow.com/questions/2517709/comparing-two-java-util-dates-to-see-if-they-are-in-the-same-day
+     ******/
 
-    private boolean sameDay(Date d1, Date d2) {
+    boolean sameDay(Date d1, Date d2) {
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         cal1.setTime(d1);
@@ -175,14 +145,14 @@ public class dateSelectorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean validateDateRange(ArrayList<Date> selectedDates) {
-        if (product.getDatesUnavailable()!=null) {
+    boolean validateDateRange(ArrayList<Date> selectedDates) {
+        if (product.getDatesUnavailable() != null) {
             for (String stringDate : product.getDatesUnavailable()) {
                 try {
                     Date temp = simpleDateFormat.parse(stringDate);
                     if (selectedDates.contains(temp))
                         return false;
-                }catch (ParseException e){
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
@@ -191,7 +161,7 @@ public class dateSelectorActivity extends AppCompatActivity {
         return true;
     }
 
-    private ArrayList<Date> getHighlightedDays() {
+    ArrayList<Date> getHighlightedDays() {
         ArrayList<Date> highlightedDays = new ArrayList<>();
         Date today = new Date();
         if (product.getDatesUnavailable() != null) {
@@ -204,14 +174,14 @@ public class dateSelectorActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 //if date is in the past, dont add it to highlightedDays
-                if(!date.before(today) || sameDay(date, today))
+                if (!date.before(today) || sameDay(date, today))
                     highlightedDays.add(date);
             }
         }
         return highlightedDays;
     }
 
-    private void returnDateRange(ArrayList<Date> selectedDateRange) {
+    void returnDateRange(ArrayList<Date> selectedDateRange) {
         //convert ArrayList<Date> to ArrayList<String> and return this to previous activity
         //in onActivityResult in previous activity will need to reconvert to ArrayList<Date>
         ArrayList<String> dates = new ArrayList<>();
@@ -235,7 +205,7 @@ public class dateSelectorActivity extends AppCompatActivity {
         finish();
     }
 
-    private boolean isSelectable(Date date) {
+    boolean isSelectable(Date date) {
         //if date has previously been selected, return false. Else return true;
         //first parse date into string
         String dateString = simpleDateFormat.format(date);

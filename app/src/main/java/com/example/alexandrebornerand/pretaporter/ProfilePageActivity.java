@@ -395,12 +395,7 @@ public class ProfilePageActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), ListActivity.class));
                             }
-                            //if user clicked settings
-                            else if (menuItem.getItemId() == R.id.nav_settings) {
-                                //TODO: uncomment below once toolbar implemented on settings page
-                                //finish();
-                                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                            }
+
                             //if user clicked my listings
                             else if (menuItem.getItemId() == R.id.nav_user_listings) {
                                 finish();

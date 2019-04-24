@@ -6,6 +6,8 @@ import android.widget.ProgressBar;
 
 import com.example.alexandrebornerand.pretaporter.R;
 
+/**** not used ******/
+
 public class LoadingViewHolder extends RecyclerView.ViewHolder {
 
     public ProgressBar progressBar;

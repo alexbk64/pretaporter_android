@@ -10,17 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.alexandrebornerand.pretaporter.R;
 
-//public class LoadingViewHolder extends RecyclerView.ViewHolder {
-//
-//    public ProgressBar progressBar;
-//
-//    public LoadingViewHolder(View itemView) {
-//        super(itemView);
-//        progressBar = itemView.findViewById(R.id.progressBar);
-//
-//    }
-//
-//}
+/***not used but implemented for showing lists of users in recyclerview - could be useful ****/
 
 
 public class UserViewHolder extends RecyclerView.ViewHolder {

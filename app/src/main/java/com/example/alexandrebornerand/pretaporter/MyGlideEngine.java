@@ -10,6 +10,9 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.zhihu.matisse.engine.ImageEngine;
 
+/********* Used to integrate Glide v4 with Matisse library, which uses Glide v3 *****************/
+/********* ref: https://github.com/zhihu/Matisse/issues/167 **************/
+
 public class MyGlideEngine implements ImageEngine {
 
     @Override

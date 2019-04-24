@@ -44,8 +44,6 @@ import com.zhihu.matisse.MimeType;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//for darsh multipleImageSelect library
-//import com.darsh.multipleimageselect.models.Image;
 
 public class addItemActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -53,18 +51,11 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
     private static final int REQUEST_CODE_CHOOSE = 71;
 
     private EditText editText_title, editText_desc, editText_price;
-    private ImageView imageView_image;
-    private Button btn_post;
     private ImageButton btn_upload_img;
-    private Uri filePath;
-//    private Uri[] filePaths;
     private final int PICK_IMAGE_REQUEST = 82;
     private EditText minimumDaysET;
-    //For darsh multipleImageSelect Library
-//    ArrayList<Image> images;
     ArrayList<Uri> images;
     ArrayList<String> downloadUrls;
-//    private String downloadUrl;
 
     DatabaseReference ref;
     String id;
@@ -73,32 +64,19 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
     String price;
     float finalPrice;
     double rating;
-    Uri downloadUri=null;
-    int count;
 
     private ImageView img1, img2, img3, img4, img5, img6;
     private View view;
-    private int img=0;
+    private int img = 0;
     private String categorySelected;
     private String colourSelected;
     private String sizeSelected;
-    private Spinner spinner;
-    private Spinner colourSpinner;
-    private Spinner sizeSpinner;
     private TextView imageSelectorTV;
 
-//    private ProgressDialog progressDialog;
 
-
-    //firebase
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
-    private FirebaseUser firebaseUser;
-    private String uid;
     private User customer;
-    private StorageReference storageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,15 +88,16 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
         editText_price = (EditText) findViewById(R.id.price_EditText);
         btn_upload_img = (ImageButton) findViewById(R.id.imageButton);
         minimumDaysET = (EditText) findViewById(R.id.minimumDays_EditText);
-        btn_post = (Button) findViewById(R.id.AddBtn);
+        Button btn_post = (Button) findViewById(R.id.AddBtn);
         imageSelectorTV = (TextView) findViewById(R.id.item_image_TextView);
 //        imageView_image = (ImageView) findViewById(R.id.imgView);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        uid = firebaseUser.getUid();
+        //firebase
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = firebaseUser.getUid();
         databaseReference = firebaseDatabase.getReference("/listings/");
-        firebaseStorage = FirebaseStorage.getInstance();
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference("/users/" + uid + "/images/");
 
         btn_post.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +115,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
         });
         downloadUrls = new ArrayList<>();
         img1 = (ImageView) findViewById(R.id.img1);
-        img2= (ImageView) findViewById(R.id.img2);
+        img2 = (ImageView) findViewById(R.id.img2);
         img3 = (ImageView) findViewById(R.id.img3);
         img4 = (ImageView) findViewById(R.id.img4);
         img5 = (ImageView) findViewById(R.id.img5);
@@ -146,7 +125,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 view = v;
-                img=1;
+                img = 1;
                 chooseImage();
             }
         });
@@ -154,7 +133,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 view = v;
-                img=2;
+                img = 2;
                 chooseImage();
             }
         });
@@ -162,7 +141,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 view = v;
-                img=3;
+                img = 3;
                 chooseImage();
             }
         });
@@ -170,7 +149,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 view = v;
-                img=4;
+                img = 4;
                 chooseImage();
             }
         });
@@ -178,7 +157,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 view = v;
-                img=5;
+                img = 5;
                 chooseImage();
             }
         });
@@ -186,7 +165,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 view = v;
-                img=6;
+                img = 6;
                 chooseImage();
             }
         });
@@ -210,16 +189,11 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
 
         });
 
-        //TODO: if user clicked on edit item
-        //change page title to edit item
-        //set text title, description, price, min days
-        //load pictures from storage into thumbnails
-
 
         //Categories spinner
         categorySelected = "";
 
-        spinner = (Spinner) findViewById(R.id.categories_spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.categories_spinner);
         spinner.setOnItemSelectedListener(this);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -231,7 +205,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
 
         //Colours spinner
         colourSelected = "";
-        colourSpinner = (Spinner) findViewById(R.id.colours_spinner);
+        Spinner colourSpinner = (Spinner) findViewById(R.id.colours_spinner);
         colourSpinner.setOnItemSelectedListener(this);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> colourAdapter = ArrayAdapter.createFromResource(this,
@@ -243,7 +217,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
 
         //Sizes spinner
         sizeSelected = "";
-        sizeSpinner = (Spinner) findViewById(R.id.sizes_spinner);
+        Spinner sizeSpinner = (Spinner) findViewById(R.id.sizes_spinner);
         sizeSpinner.setOnItemSelectedListener(this);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> sizeAdapter = ArrayAdapter.createFromResource(this,
@@ -256,10 +230,6 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
 
     }//END onCreate()
 
-//    @Override
-//    protected void onPause(){
-//        super.onPause();
-//    }
 
     private void postItemtoListings() {
         ref = databaseReference.push();
@@ -308,11 +278,11 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             cancel = true;
         }
         // Check for at least 1 image
-        if (images==null) {
-                imageSelectorTV.setError(getString(R.string.error_field_required));
-                Toast.makeText(this, "You must select at least 1 image", Toast.LENGTH_SHORT).show();
-                focusView = btn_upload_img;
-                cancel = true;
+        if (images == null) {
+            imageSelectorTV.setError(getString(R.string.error_field_required));
+            Toast.makeText(this, "You must select at least 1 image", Toast.LENGTH_SHORT).show();
+            focusView = btn_upload_img;
+            cancel = true;
         }
 
         if (cancel) {
@@ -343,13 +313,6 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
         }
     }//END postItemToListings
 
-    //title is valid if it has more than 1 and less than 80 characters
-//    private boolean isTitleValid(String title) {
-//        if (title.length()<1 || title.length()>80)
-//            return false;
-//        return true;
-//    }
-
     public void uploadImage() {
 
         if (images != null) {
@@ -359,47 +322,12 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
 
 //            filePaths = new Uri[images.size()];
             for (int i = 0; i < images.size(); i++) {
-//                filePaths[i] = images.get(i);
-
-
-                /*** working but cant get url this way because taskSnapshot.getDownloadUrl is obsolete**/
-//            //StorageReference ref = storageReference.child("images/"+getRef().get);
-                storageRef = storageReference.child(id + "/");
+                StorageReference storageRef = storageReference.child(id + "/");
                 final StorageReference photoRef = storageRef.child(String.valueOf(i));
                 final DatabaseReference dbRef = ref.child("images");
-//            storageRef.putFile(filePath)
-//                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            if (!addItemActivity.this.isFinishing() && progressDialog!=null) {
-//                                progressDialog.dismiss();
-//                                Toast.makeText(addItemActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    })
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            if (!addItemActivity.this.isFinishing() && progressDialog!=null) {
-//                                progressDialog.dismiss();
-//                                Toast.makeText(addItemActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-//                            }
-////                            progressDialog.dismiss();
-////                            Toast.makeText(addItemActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    })
-//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-//                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-//                                    .getTotalByteCount());
-//                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
-//                        }
-//                    });
 
                 /*** using storageRef to get download url on condition task was successful***/
                 UploadTask uploadTask = photoRef.putFile(images.get(i));
-
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
                     public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -419,59 +347,19 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
                             dbRef.setValue(downloadUrls);
                             if (!addItemActivity.this.isFinishing() && progressDialog != null)
                                 progressDialog.dismiss();
-                            Toast.makeText(addItemActivity.this, "upload successful ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(addItemActivity.this, "Upload successful ", Toast.LENGTH_SHORT).show();
 
                         } else {
                             // Handle failures
-                            Toast.makeText(addItemActivity.this, "upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(addItemActivity.this, "Upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-//                photoRef.putFile(filePaths[i]).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//                    //                storageRef.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//                    @Override
-//                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                        if (!task.isSuccessful()) {
-//                            throw task.getException();
-//                        }
-//                        return photoRef.getDownloadUrl();
-//                    }
-//                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Uri> task) {
-//                        if (task.isSuccessful()) {
-//                            downloadUri = task.getResult();
-//                            if (downloadUri!=null)
-//                                downloadUrls.add(downloadUri.toString());
-//                        }
-//                        else {
-////                        url = "";
-//                            Toast.makeText(addItemActivity.this, "upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });//End addOnCompleteListener
             }//END for each image
         }//END if images!=null
 //        return url;
     }//END uploadImages
 
-    /*** using multipleImageSelect library
-     * https://github.com/darsh2/MultipleImageSelect
-     */
-//    private void chooseImage() {
-//        Intent intent = new Intent(this, AlbumSelectActivity.class);
-////set limit on number of images that can be selected, default is 10
-//        int numberOfImagesToSelect = 6;
-//        intent.putExtra(Constants.INTENT_EXTRA_LIMIT, numberOfImagesToSelect);
-//        startActivityForResult(intent, Constants.REQUEST_CODE);
-//    }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == Constants.REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-//            //The array list has the image paths of the selected images
-//            images = data.getParcelableArrayListExtra(Constants.INTENT_EXTRA_IMAGES);
-//        }
-//    }
 
     /*** using built in image chooser, working **/
 
@@ -509,22 +397,27 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
             images = (ArrayList<Uri>) Matisse.obtainResult(data);
             Log.d("Matisse", "mSelected: " + images);
             //display selected in clickable ImageView views
-            if (images.size()>0) {
+            if (images.size() > 0) {
                 img1.setVisibility(View.VISIBLE);
                 img1.setImageURI(images.get(0));
-            }if (images.size()>1) {
+            }
+            if (images.size() > 1) {
                 img2.setVisibility(View.VISIBLE);
                 img2.setImageURI(images.get(1));
-            }if (images.size()>2) {
+            }
+            if (images.size() > 2) {
                 img3.setVisibility(View.VISIBLE);
                 img3.setImageURI(images.get(2));
-            }if (images.size()>3) {
+            }
+            if (images.size() > 3) {
                 img4.setVisibility(View.VISIBLE);
                 img4.setImageURI(images.get(3));
-            }if (images.size()>4) {
+            }
+            if (images.size() > 4) {
                 img5.setVisibility(View.VISIBLE);
                 img5.setImageURI(images.get(4));
-            }if (images.size()>5) {
+            }
+            if (images.size() > 5) {
                 img6.setVisibility(View.VISIBLE);
                 img6.setImageURI(images.get(5));
             }
@@ -532,9 +425,9 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
         //if called by chooseImage (single, native) i.e. user changed one image
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
-            filePath = data.getData();
+            Uri filePath = data.getData();
             //replace old uri with new uri in images
-            images.set(img-1, filePath);
+            images.set(img - 1, filePath);
             //display new image in imageView user clicked on.
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
@@ -550,7 +443,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        switch (parent.getId()){
+        switch (parent.getId()) {
             case R.id.categories_spinner:
                 categorySelected = parent.getItemAtPosition(position).toString();
             case R.id.sizes_spinner:
@@ -559,6 +452,7 @@ public class addItemActivity extends AppCompatActivity implements AdapterView.On
                 colourSelected = parent.getItemAtPosition(position).toString();
         }
     }
+
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
