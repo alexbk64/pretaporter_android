@@ -1,8 +1,7 @@
 # Prêt à Porter
 Airbnb-style app for rental of special-occasion clothing, developed in Java using Android Studio. </br>
 
-<img src=Screenshot%202020-02-07%20at%2018.49.12.png width="300"/>
-
+<img src=Screenshot%202020-02-07%20at%2018.49.12.png width="500"/>
 </br><b> Database Management System </b></br>
 Database built and managed via <a href=https://firebase.google.com/> Firebase</a>, a non-relational database management system which allows for real-time data storage and synchronisation, with near-native implementation. See below for products used.</br>
 <ul>
